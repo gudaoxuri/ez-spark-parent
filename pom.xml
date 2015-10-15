@@ -10,7 +10,7 @@
     <description>EZ spark 构建框架</description>
     <url>https://github.com/gudaoxuri/ez-spark-parent</url>
     <packaging>pom</packaging>
-    <version>0.1.0</version>
+    <version>0.1.1</version>
 
     <licenses>
         <license>
@@ -42,6 +42,7 @@
         <spark.version>1.5.0</spark.version>
         <scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
         <mainClass></mainClass>
+        <spark.scope>provided</spark.scope>
     </properties>
 
     <dependencies>
@@ -49,13 +50,13 @@
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-library</artifactId>
             <version>${scala.minor.version}</version>
-            <scope>provided</scope>
+            <scope>${spark.scope}</scope>
         </dependency>
         <dependency>
             <groupId>org.scala-lang</groupId>
             <artifactId>scala-reflect</artifactId>
             <version>${scala.minor.version}</version>
-            <scope>provided</scope>
+            <scope>${spark.scope}</scope>
         </dependency>
         <dependency>
             <groupId>org.scalatest</groupId>
@@ -73,7 +74,7 @@
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${scala.major.version}</artifactId>
             <version>${spark.version}</version>
-            <scope>provided</scope>
+            <scope>${spark.scope}</scope>
             <exclusions>
                 <exclusion>
                     <artifactId>jetty-security</artifactId>
