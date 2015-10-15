@@ -7,7 +7,7 @@ EZ Spark Parent
     <dependency>
         <groupId>com.ecfront</groupId>
         <artifactId>ez-spark-parent</artifactId>
-        <version>0.1.0</version>
+        <version>0.1.1</version>
     </dependency>
 
 ### Check out sources
