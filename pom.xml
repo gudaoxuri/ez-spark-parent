@@ -10,7 +10,7 @@
     <description>EZ spark 构建框架</description>
     <url>https://github.com/gudaoxuri/ez-spark-parent</url>
     <packaging>pom</packaging>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
 
     <licenses>
         <license>
@@ -39,7 +39,7 @@
         <scala.major.version>2.10</scala.major.version>
         <scala.minor.version>2.10.5</scala.minor.version>
         <scalatest.version>2.2.5</scalatest.version>
-        <spark.version>1.5.0</spark.version>
+        <spark.version>1.6.1</spark.version>
         <scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
         <mainClass></mainClass>
         <spark.scope>provided</spark.scope>
