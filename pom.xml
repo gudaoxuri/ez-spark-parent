@@ -10,7 +10,7 @@
     <description>EZ spark 构建框架</description>
     <url>https://github.com/gudaoxuri/ez-spark-parent</url>
     <packaging>pom</packaging>
-    <version>0.1.2</version>
+    <version>1.0.0-SNAPSHOT</version>
 
     <licenses>
         <license>
@@ -35,15 +35,35 @@
     </scm>
 
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <jdk.version>1.8</jdk.version>
-        <scala.major.version>2.10</scala.major.version>
-        <scala.minor.version>2.10.5</scala.minor.version>
-        <scalatest.version>2.2.5</scalatest.version>
-        <spark.version>1.6.1</spark.version>
-        <scala-maven-plugin.version>3.2.0</scala-maven-plugin.version>
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
+        <maven.compiler.compilerVersion>${java.version}</maven.compiler.compilerVersion>
+        <scala.major.version>2.11</scala.major.version>
+        <scala.minor.version>2.11.8</scala.minor.version>
+        <scalatest.version>3.0.4</scalatest.version>
+        <spark.version>2.2.1</spark.version>
+        <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
+        <scopt.version>3.7.0</scopt.version>
         <mainClass></mainClass>
         <spark.scope>provided</spark.scope>
+        <maven.deploy.skip>false</maven.deploy.skip>
+        <maven.gpg.skip>false</maven.gpg.skip>
     </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-streaming_${scala.major.version}</artifactId>
+                <version>${spark.version}</version>
+                <scope>${spark.scope}</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <dependencies>
         <dependency>
@@ -59,18 +79,6 @@
             <scope>${spark.scope}</scope>
         </dependency>
         <dependency>
-            <groupId>org.scalatest</groupId>
-            <artifactId>scalatest_${scala.major.version}</artifactId>
-            <version>${scalatest.version}</version>
-            <scope>test</scope>
-            <exclusions>
-                <exclusion>
-                    <groupId>org.scala-lang</groupId>
-                    <artifactId>scala-library</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        <dependency>
             <groupId>org.apache.spark</groupId>
             <artifactId>spark-core_${scala.major.version}</artifactId>
             <version>${spark.version}</version>
@@ -83,6 +91,35 @@
                 <exclusion>
                     <artifactId>jetty-continuation</artifactId>
                     <groupId>org.eclipse.jetty</groupId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${scala.major.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>${spark.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.github.scopt</groupId>
+            <artifactId>scopt_2.11</artifactId>
+            <version>${scopt.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.scala-lang</groupId>
+                    <artifactId>scala-library</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+        <dependency>
+            <groupId>org.scalatest</groupId>
+            <artifactId>scalatest_${scala.major.version}</artifactId>
+            <version>${scalatest.version}</version>
+            <scope>test</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.scala-lang</groupId>
+                    <artifactId>scala-library</artifactId>
                 </exclusion>
             </exclusions>
         </dependency>
@@ -145,7 +182,6 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.5.5</version>
                 <configuration>
                     <!-- get all project dependencies -->
                     <descriptorRefs>
@@ -183,7 +219,6 @@
                         <executions>
                             <execution>
                                 <id>attach-sources</id>
-                                <phase>verify</phase>
                                 <goals>
                                     <goal>jar</goal>
                                 </goals>
@@ -202,6 +237,16 @@
                                 </goals>
                             </execution>
                         </executions>
+                        <configuration>
+                            <skip>${maven.gpg.skip}</skip>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <configuration>
+                            <skip>${maven.deploy.skip}</skip>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>

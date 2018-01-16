@@ -11,17 +11,17 @@
 <parent>
     <groupId>com.ecfront</groupId>
     <artifactId>ez-spark-parent</artifactId>
-    <version>0.1.2</version>
+    <version>1.0.0-SNAPSHOT</version>
 </parent>
 
 此pom已包含了spark core，如果要用spark sql等功能需要在项目pom.xml中自行引入，如
 
- <dependency>
+<dependency>
     <groupId>org.apache.spark</groupId>
-    <artifactId>spark-streaming_2.10</artifactId>
+    <artifactId>spark-sql_${scala.major.version}</artifactId>
     <version>${spark.version}</version>
     <scope>${spark.scope}</scope>
- </dependency>
+</dependency>
 ----
 
 === Step2 复写两个属性
