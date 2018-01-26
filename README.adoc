@@ -24,19 +24,19 @@
 </dependency>
 ----
 
-=== Step2 复写两个属性
+=== Step2 复写启动类
 
 [source]
 ----
 <mainClass>你的启动类</mainClass>
-<spark.scope>provided 或者 compile，前则是默认值，用于打包发布，如果本地调试的话必须改成compile</spark.scope>
+<spark.scope>compile</spark.scope>
 ----
 
 === Step3 打包发布
 
 [source]
 ----
-mvn assembly:assembly
+mvn clean -Dspark.scope=provided assembly:assembly
 ----
 
 === Check out sources
