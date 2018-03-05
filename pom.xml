@@ -45,7 +45,7 @@
         <scala.major.version>2.11</scala.major.version>
         <scala.minor.version>2.11.8</scala.minor.version>
         <scalatest.version>3.0.4</scalatest.version>
-        <spark.version>2.2.1</spark.version>
+        <spark.version>2.3.0</spark.version>
         <scala-maven-plugin.version>3.3.1</scala-maven-plugin.version>
         <scopt.version>3.7.0</scopt.version>
         <mainClass></mainClass>
@@ -61,6 +61,11 @@
                 <artifactId>spark-streaming_${scala.major.version}</artifactId>
                 <version>${spark.version}</version>
                 <scope>${spark.scope}</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.spark</groupId>
+                <artifactId>spark-sql-kafka-0-10_${scala.major.version}</artifactId>
+                <version>${spark.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
