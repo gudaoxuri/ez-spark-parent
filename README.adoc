@@ -11,7 +11,7 @@
 <parent>
     <groupId>com.ecfront</groupId>
     <artifactId>ez-spark-parent</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 </parent>
 
 此pom已包含了spark core，如果要用spark sql等功能需要在项目pom.xml中自行引入，如

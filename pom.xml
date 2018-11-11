@@ -10,7 +10,7 @@
     <description>EZ spark 构建框架</description>
     <url>https://github.com/gudaoxuri/ez-spark-parent</url>
     <packaging>pom</packaging>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <licenses>
         <license>
@@ -107,8 +107,9 @@
         </dependency>
         <dependency>
             <groupId>com.github.scopt</groupId>
-            <artifactId>scopt_2.11</artifactId>
+            <artifactId>scopt_${scala.major.version}</artifactId>
             <version>${scopt.version}</version>
+            <optional>true</optional>
             <exclusions>
                 <exclusion>
                     <groupId>org.scala-lang</groupId>
